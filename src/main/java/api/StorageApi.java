@@ -7,7 +7,9 @@ import com.googlecode.jsonrpc4j.JsonRpcService;
 public interface StorageApi {
     void addConnection(
             @JsonRpcParam(value = "alias") String alias,
-            @JsonRpcParam(value = "connectionString") String connectionString
+            @JsonRpcParam(value = "connectionURL") String connectionURL,
+            @JsonRpcParam(value = "username") String username,
+            @JsonRpcParam(value = "password") String password
     );
 
     void removeConnection(
