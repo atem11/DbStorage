@@ -1,13 +1,11 @@
-package storage.impl;
+package atem11.test.storage.impl;
 
-import model.DbConnection;
-import org.springframework.stereotype.Component;
-import storage.ConnectionStorage;
+import atem11.test.model.DbConnection;
+import atem11.test.storage.ConnectionStorage;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
 public class InMemConnectionStorage implements ConnectionStorage {
     private final Map<String, DbConnection> connectionStor;
 

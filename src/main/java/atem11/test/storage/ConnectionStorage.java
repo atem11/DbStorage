@@ -1,6 +1,6 @@
-package storage;
+package atem11.test.storage;
 
-import model.DbConnection;
+import atem11.test.model.DbConnection;
 
 public interface ConnectionStorage {
     void saveConnection(String alias, DbConnection dbConnection);

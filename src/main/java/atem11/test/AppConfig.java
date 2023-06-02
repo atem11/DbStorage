@@ -1,15 +1,16 @@
-package app;
+package atem11.test;
 
-import com.googlecode.jsonrpc4j.spring.AutoJsonRpcServiceImplExporter;
+import atem11.test.storage.ConnectionStorage;
+import atem11.test.storage.impl.InMemConnectionStorage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import storage.ConnectionStorage;
+import org.springframework.context.annotation.Lazy;
 
 @Configuration
-@ComponentScan("storage")
+@ComponentScan("atem11.test.*")
 public class AppConfig {
 
     private final ApplicationContext context;
@@ -18,16 +19,15 @@ public class AppConfig {
         this.context = context;
     }
 
-    @Bean
-    public static AutoJsonRpcServiceImplExporter autoJsonRpcServiceImplExporter() {
-        return new AutoJsonRpcServiceImplExporter();
+    @Lazy
+    @Bean("InMemConnectionStorage")
+    public InMemConnectionStorage inMemConnectionStorage() {
+        return new InMemConnectionStorage();
     }
-
     @Bean
     public ConnectionStorage connectionStorage(
             @Value("${connectionStorage.class}") String qualifier
     ) {
         return (ConnectionStorage) context.getBean(qualifier);
     }
-
 }

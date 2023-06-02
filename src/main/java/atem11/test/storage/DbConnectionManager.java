@@ -1,4 +1,4 @@
-package storage;
+package atem11.test.storage;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,13 +14,13 @@ public class DbConnectionManager {
     private static final String VALIDATION_QUERY_SQL = "select 1";
 
     private final Map<String, ComboPooledDataSource> dataSources;
-    private final ConnectionStorage storage;
+    private final ConnectionStorage connectionStorage;
 
     public DbConnectionManager(
-            ConnectionStorage storage
+            ConnectionStorage connectionStorage
     ) {
         this.dataSources = new HashMap<>();
-        this.storage = storage;
+        this.connectionStorage = connectionStorage;
     }
 
     public final Connection connect(String alias) throws SQLException {
@@ -32,7 +32,7 @@ public class DbConnectionManager {
             return conn;
         } else {
             var dataSource = new ComboPooledDataSource();
-            var config = storage.getConnection(alias);
+            var config = connectionStorage.getConnection(alias);
             dataSource.setJdbcUrl(config.connectionURL());
             dataSource.setUser(config.username());
             dataSource.setPassword(config.password());
