@@ -1,5 +1,6 @@
 package atem11.test;
 
+import atem11.test.model.DbConfig;
 import atem11.test.storage.ConnectionStorage;
 import atem11.test.storage.impl.InMemConnectionStorage;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,5 +30,16 @@ public class AppConfig {
             @Value("${connectionStorage.class}") String qualifier
     ) {
         return (ConnectionStorage) context.getBean(qualifier);
+    }
+
+    @Lazy
+    @Bean
+    public DbConfig dbConfig(
+            @Value("${db.config.url}") String connectionURL,
+            @Value("${db.config.username}") String username,
+            @Value("${db.config.password}") String password,
+            @Value("${db.config.maxPoolSize}") Integer maxPoolSize
+    ) {
+        return new DbConfig(connectionURL, username, password, maxPoolSize);
     }
 }

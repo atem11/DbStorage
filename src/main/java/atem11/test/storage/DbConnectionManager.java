@@ -37,7 +37,7 @@ public class DbConnectionManager {
             dataSource.setUser(config.username());
             dataSource.setPassword(config.password());
             dataSource.setMinPoolSize(1);
-            dataSource.setMaxPoolSize(100); // TODO need startUP configuration
+            dataSource.setMaxPoolSize(100);
             dataSource.setTestConnectionOnCheckout(true);
             dataSource.setPreferredTestQuery(VALIDATION_QUERY_SQL);
 

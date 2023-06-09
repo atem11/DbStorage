@@ -1,24 +1,17 @@
 package atem11.test.api;
 
 
+import atem11.test.api.model.AddConnectionRequest;
+import atem11.test.api.model.ExecuteRequest;
+import atem11.test.api.model.RemoveConnectionRequest;
+import atem11.test.api.model.TestConnectionRequest;
+
 public interface StorageApi {
-    void addConnection(
-            String alias,
-            String connectionURL,
-            String username,
-            String password
-    );
+    void addConnection(AddConnectionRequest request);
 
-    void removeConnection(
-            String alias
-    );
+    void removeConnection(RemoveConnectionRequest request);
 
-    void testConnection(
-            String alias
-    );
+    void testConnection(TestConnectionRequest request);
 
-    String execute(
-            String alias,
-            String statement
-    );
+    String execute(ExecuteRequest request);
 }

@@ -10,7 +10,6 @@ public class InMemConnectionStorage implements ConnectionStorage {
     private final Map<String, DbConnection> connectionStor;
 
     public InMemConnectionStorage() {
-        System.out.println("InMemConnectionStorage constructor");
         this.connectionStor = new HashMap<>();
     }
 
