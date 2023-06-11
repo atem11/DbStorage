@@ -44,7 +44,7 @@ public class Api {
     }
 
     @POST
-    @Path("exit")
+    @Path("/exit")
     public void exit() {
         System.exit(0);
     }
