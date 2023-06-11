@@ -5,9 +5,6 @@ import atem11.test.model.DbConnection;
 import atem11.test.storage.ConnectionStorage;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class DbConnectionStorage implements ConnectionStorage {
     private static final String VALIDATION_QUERY_SQL = "select 1";
 

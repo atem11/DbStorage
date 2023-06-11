@@ -8,21 +8,15 @@ import atem11.test.api.model.TestConnectionRequest;
 import com.github.krupt.jsonrpc.annotation.JsonRpcService;
 import atem11.test.model.DbConnection;
 import atem11.test.storage.ConnectionStorage;
-import atem11.test.storage.DbConnectionManager;
-
-import java.sql.SQLException;
 
 @JsonRpcService
 public class K8sStorageApi implements StorageApi {
     private final ConnectionStorage connectionStorage;
-    private final DbConnectionManager dbConnectionManager;
 
     public K8sStorageApi(
-            ConnectionStorage connectionStorage,
-            DbConnectionManager dbConnectionManager
+            ConnectionStorage connectionStorage
     ) {
         this.connectionStorage = connectionStorage;
-        this.dbConnectionManager = dbConnectionManager;
         System.out.println("K8sStorageApi running");
     }
 
@@ -50,13 +44,6 @@ public class K8sStorageApi implements StorageApi {
 
     @Override
     public String execute(ExecuteRequest request) {
-        try (var connection = dbConnectionManager.connect(request.getAlias());
-             var st = connection.prepareStatement(request.getStatement())
-        ) {
-            var rs = st.executeQuery();
-            return rs.toString();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 }

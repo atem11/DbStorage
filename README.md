@@ -1,3 +1,3 @@
 # DbStorage
 
-Simple k8s plugin, implements [API](./src/main/java/api/StorageApi.java)
+Simple k8s plugin, implements [API](service/src/src/main/java/api/StorageApi.java)
