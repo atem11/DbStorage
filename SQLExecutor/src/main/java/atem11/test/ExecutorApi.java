@@ -8,16 +8,15 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Path("/executor")
 @Service
-public class Api {
+@Path("/executor")
+public class ExecutorApi {
 
     private final DbConnectionManager dbConnectionManager;
 
-    public Api(DbConnectionManager dbConnectionManager) {
+    public ExecutorApi(DbConnectionManager dbConnectionManager) {
         this.dbConnectionManager = dbConnectionManager;
     }
 
@@ -35,9 +34,13 @@ public class Api {
     @POST
     @Path("/execute")
     @Produces(MediaType.APPLICATION_JSON)
-    public ResultSet execute(DbConnection config, String statement) {
-        try {
-            return dbConnectionManager.execute(config, statement);
+    public String execute(DbConnection config, String statement) {
+        try (var rs =  dbConnectionManager.execute(config, statement)) {
+            var builder = new StringBuilder();
+            while (rs.next()) {
+                builder.append(rs);
+            }
+            return builder.toString();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

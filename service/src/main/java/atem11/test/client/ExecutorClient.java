@@ -18,10 +18,10 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
 public class ExecutorClient implements AutoCloseable {
-    public static String SERVICE = "/executor";
-    public static String TEST = SERVICE + "/test";
-    public static String EXECUTE = SERVICE + "/execute";
-    public static String EXIT = SERVICE + "/exit";
+    public static final String SERVICE = "/executor";
+    public static final String TEST = SERVICE + "/test";
+    public static final String EXECUTE = SERVICE + "/execute";
+    public static final String EXIT = SERVICE + "/exit";
 
 
     private final URI containerUri;
