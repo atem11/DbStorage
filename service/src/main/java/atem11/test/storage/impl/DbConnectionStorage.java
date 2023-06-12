@@ -41,7 +41,7 @@ public class DbConnectionStorage implements ConnectionStorage {
             st.setString(++index, dbConnection.connectionURL());
             st.setString(++index, dbConnection.username());
             st.setString(++index, dbConnection.password());
-            st.executeQuery();
+            st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -54,7 +54,7 @@ public class DbConnectionStorage implements ConnectionStorage {
         ) {
             int index = 0;
             st.setString(++index, alias);
-            st.executeQuery();
+            st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

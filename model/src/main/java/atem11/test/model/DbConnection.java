@@ -25,4 +25,18 @@ public class DbConnection {
     public String password() {
         return password;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DbConnection that = (DbConnection) o;
+        return this.connectionURL.equals(that.connectionURL) &&
+                this.username.equals(that.username) &&
+                this.password.equals(that.password);
+    }
 }
