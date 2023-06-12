@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-storage-{{ .Release.Name }}
+  namespace: dbstorage
+  labels:
+    k8s-app: file-service
+spec:
+  containers:
+    - name: file-service-container
+      image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+      imagePullPolicy: {{ .Values.image.pullPolicy }}
+      resources:
+        {{- toYaml .Values.resources | nindent 12 }}
+      env:
+        - name: JVM_OPTIONS
+          value: "{{ .Values.app.jvmOptions }}"

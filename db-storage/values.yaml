@@ -1,0 +1,16 @@
+image:
+  name: db-storage
+  tag: latest
+  pullPolicy: IfNotPresent
+app:
+  jvmOptions: "-Xmx1024m"
+  port: 8080
+  host: 0.0.0.0
+  config:
+    rootDir: .
+    maxRequestSize: 10485760
+    maxFileChunkSize: 10485760
+resources:
+  requests:
+    cpu: 1000m
+    memory: 1536Mi
