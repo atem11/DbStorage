@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class DbConnectionStorage implements ConnectionStorage {
     private static final String VALIDATION_QUERY_SQL = "select 1";
-    private static final String MIGRATIONS_LOCATION = "classpath:migrations";
+    private static final String MIGRATIONS_LOCATION = "classpath:db/migrations";
     private final ComboPooledDataSource dataSource;
 
     public DbConnectionStorage(DbConfig dbConfig) {

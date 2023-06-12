@@ -15,7 +15,7 @@ public class InMemConnectionStorage implements ConnectionStorage {
 
     @Override
     public void saveConnection(String alias, DbConnection dbConnection) {
-        connectionStor.put(alias, dbConnection);
+        connectionStor.putIfAbsent(alias, dbConnection);
     }
 
     @Override
